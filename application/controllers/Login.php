@@ -34,7 +34,9 @@ class Login extends CI_Controller{
             else{
                 $data = array();
                 if($this->input->post()){
-                    $data['wrong_message'] = 'Wrong Email or Password!';
+                    $data['message'] = 'Wrong Email or Password!';
+                }else{
+                    $data['message'] = 'Sign in to start your session';
                 }
                 
                 $this->load->view('frontend/login', $data);

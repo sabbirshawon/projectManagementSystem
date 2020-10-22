@@ -30,6 +30,8 @@ class Login_model extends CI_Model
             }
 
             $this->session->set_userdata($newdata);
+            
+            print_r("data is stored on session");
         }
         else {
             print_r("data is not avialble");

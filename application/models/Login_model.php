@@ -17,8 +17,19 @@ class Login_model extends CI_Model
         if($query->num_rows()>0) {
 			
             foreach($query->result() as $rows) {
-                print_r("User name: " .$rows->user_name ." User Email: ".$rows->user_email );
+                //print_r("User name: " .$rows->user_name ." User Email: ".$rows->user_email );
+                //add all data to session
+					$newdata = array(
+						'user_id'  => $rows->user_id,
+						'user_name'  => $rows->user_name,
+						'user_email'  => $rows->user_email,
+						'user_type'  => $rows->user_type,
+						'user_status'    => $rows->user_status,
+						'logged_in'  => TRUE
+					);
             }
+
+            $this->session->set_userdata($newdata);
         }
         else {
             print_r("data is not avialble");

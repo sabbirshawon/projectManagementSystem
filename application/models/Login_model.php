@@ -8,25 +8,22 @@ class Login_model extends CI_Model
           parent::__construct();
      }
 
-     function login($email, $password){
-        //print_r($email." ". $password);
-        //$this->db->where("user_type", $type);
-
+     function login($email, $password) {
+        
         $this->db->where("user_email", $email);
 		$this->db->where("user_password", $password);
         $query = $this->db->get("tbl_users");
         
-        if($query->num_rows()>0)
-		{
-            print_r("Data available");
-		}
-        else
-        {
-			print_r("Data not available");
-		}
-
-
-     }
+        if($query->num_rows()>0) {
+			
+            foreach($query->result() as $rows) {
+                print_r("User name: " .$rows->user_name ." User Email: ".$rows->user_email );
+            }
+        }
+        else {
+            print_r("data is not avialble");
+        }
+    }
 
 }
 ?>

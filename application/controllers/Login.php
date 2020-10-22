@@ -11,12 +11,14 @@ class Login extends CI_Controller{
         //print_r("login");
         $email = $this->input->post('user_email');
         $password = md5($this->input->post('user_password'));
-        print_r("size of string is " . strlen($email));
-        print_r(" " . $email);
+        $this->login_model->login($email, $password);
+        
+        //print_r("size of string is " . strlen($email));
+        //print_r(" " . $email);
        
         if (isset($email) && $email !== '') 
         {
-            redirect('Dashboard');
+            //redirect('Dashboard');
         }else{
             $this->load->view('frontend/login');
         }

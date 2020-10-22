@@ -11,20 +11,35 @@ class Login extends CI_Controller{
         //print_r("login");
         $email = $this->input->post('user_email');
         $password = md5($this->input->post('user_password'));
-        $this->login_model->login($email, $password);
+        $result=$this->login_model->login($email, $password);
         
-        //print_r("size of string is " . strlen($email));
-        //print_r(" " . $email);
-       
-        if (isset($email) && $email !== '') 
-        {
-            //redirect('Dashboard');
-        }else{
-            $this->load->view('frontend/login');
+        if($result AND ($this->session->userdata('user_status')==1)){
+            redirect('dashboard');
         }
-        
-        
-        //$this->load->view('frontend/login');
+        else{
+            if($this->session->userdata('user_status')==1)
+            {
+                print_r("Destroying session");
+                $newdata = array( 
+                    'user_id'  => '',
+                    'user_type'  => '',
+                    'user_name'  => '',
+                    'user_email'    => '',
+                    'user_status'    => '',
+                    'logged_in'  => FALSE
+                );    
+                $this->session->unset_userdata($newdata);
+			    $this->session->sess_destroy();
+            }
+            else{
+                $data = array();
+                if($this->input->post()){
+                    $data['wrong_message'] = 'Wrong Email or Password!';
+                }
+                
+                $this->load->view('frontend/login', $data);
+            }
+        }
         
     }
 }

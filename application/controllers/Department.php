@@ -9,14 +9,19 @@ class Department extends CI_Controller{
   
     public function index(){
         //print_r('Department');
-        $this->load->view('backend/layouts/header');
-        $this->load->view('backend/department_view');
+
+        $data['title'] = "Department";
+        $data['department_info'] = $this->department_model->get_department_info();
+
+        $data['deptt_info'] = $this->department_model->get_deptt();
+        $this->load->view('backend/layouts/header',$data);
+        $this->load->view('backend/department_view',$data);
         $this->load->view('backend/layouts/footer');
     }
 
     function add_dept(){
         $this->department_model->add_dept();
-        //redirect('department');
+        redirect('department');
       }
 }
 ?>

@@ -15,14 +15,31 @@ class Department_model extends CI_Model
                     'dept_created_by' => $this->session->userdata('user_id')
                     );
         if($this->db->insert('department_info',$insert_data)){
-            print_r('dept added');
+            print_r('Designation added');
 			}
 			else{
-				print_r('dept not asses added');
+				print_r('Designation not added');
 				
 			}
         
-    }
+	}
+	
+	function add_designation(){
+		$insert_data= array(
+					'deptID' => $this->input->post('deptID'),
+					'designationName' => $this->input->post('designationName'),
+					'desgStatus' => $this->input->post('desgStatus'),
+					'desg_created_by' => $this->session->userdata('user_id')
+					);
+		if($this->db->insert('designation_info',$insert_data)){
+			$data['status'] = 'success';
+		}
+		else{
+			$data['status'] = 'error';
+			
+		}
+		
+	}
 
     function get_department_info(){
 		$query= $this->db->select('*')

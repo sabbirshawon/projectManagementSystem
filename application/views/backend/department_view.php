@@ -34,21 +34,35 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>Rendering engine</th>
-                    <th>Browser</th>
-                    <th>Platform(s)</th>
-                    <th>Engine version</th>
-                    <th>CSS grade</th>
+                    <th>Department ID</th>
+                    <th>Department Name</th>
+                    <th>Department Status</th>
+                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>Other browsers</td>
-                    <td>All others</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>U</td>
-                  </tr>
+                    <?php foreach ($department_info as $d_info):?>
+                        <tr> 
+                            <td><?php echo $d_info['deptID'];?></td>
+                            <td><?php echo $d_info['deptName'];?></td>
+                            <td>    
+                                <?php 
+                                    if($d_info['deptStatus'] == '1'){
+                                        echo '<span class="text-success">Active</span>';
+                                    } 
+                                    else{
+                                        echo '<span class="text-danger">Inactive</span>';
+                                    }
+
+                                ?>
+                    
+                            </td>
+
+                            <td>
+                                <a type="button" class="btn btn-primary">Edit</a>
+                            </td> 
+                        </tr>
+                    <?php endforeach;?>
                   </tbody>
                   
                 </table>

@@ -22,7 +22,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <div class="card">
+            <div class="card" id="department_card">
               <div class="card-header">
                 <h3 class="card-title">DataTable with default features</h3>
                 <br>
@@ -70,6 +70,58 @@
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
+
+
+            <div class="card" id="department_card">
+              <div class="card-header">
+                <h3 class="card-title">Designation</h3>
+                <br>
+                <br>
+                <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDesg" data-whatever="@mdo">Add New Designation</a>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example2" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                        <th>Designation ID</th>
+                        <th>Department Name</th>
+                        <th>Designation Name</th>
+                        <th>Designation Status</th>
+                        <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php foreach ($designation_info as $d_info):?>
+                        <tr> 
+                            <td><?php echo $d_info['designationID'];?></td>
+                            <td><?php echo $d_info['deptName'];?></td>
+                            <td><?php echo $d_info['designationName'];?></td>
+                            <td>
+                                <?php 
+                                    if($d_info['desgStatus'] == '1'){
+                                        echo '<span class="text-success">Active</span>';
+                                    } 
+                                    else{
+                                        echo '<span class="text-danger">Inactive</span>';
+                                    }
+                                ?>
+                            </td>
+
+                            <td>
+                                <a type="button" class="btn btn-primary">Edit</a>
+                            </td> 
+                        </tr>
+                    <?php endforeach;?>
+                  </tbody>
+                  
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+
 
             <div class="modal fade" id="addDepat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">

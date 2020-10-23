@@ -39,12 +39,21 @@ class Department_model extends CI_Model
 		$data = $query->result();
 		$row[''] = 'Select A Department';
 		if(count($data) > 0){
-		foreach($data as $field){
-			$row[$field->deptID] = $field->deptName;
-		}
+			foreach($data as $field){
+				$row[$field->deptID] = $field->deptName;
+			}
 		}
 		return $row;
-	}	
+	}
+	
+	function get_designation_info(){
+		$query= $this->db->select('*')
+						->from('department_info,designation_info')
+						->where('department_info.deptID = designation_info.deptID')
+						->get();
+		$data = $query->result_array();
+		return $data;
+	}
 
 }
 ?>

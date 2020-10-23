@@ -23,5 +23,11 @@ class Department extends CI_Controller{
         $this->department_model->add_dept();
         redirect('department');
       }
+
+      function add_designation(){
+        
+        $this->department_model->add_designation();
+        redirect('department');
+      }
 }
 ?>

@@ -34,12 +34,12 @@
               <div class="inner">
                 <h3>44</h3>
 
-                <p>User Registrations</p>
+                <p>Assign Task </p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?php echo base_url();?>Assign_project" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -49,12 +49,12 @@
               <div class="inner">
                 <h3>65</h3>
 
-                <p>Unique Visitors</p>
+                <p>Employee</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?php echo base_url();?>Employee" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

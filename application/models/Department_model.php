@@ -8,7 +8,7 @@ class Department_model extends CI_Model
           parent::__construct();
      }
 
-     function add_dept(){
+    function add_dept(){
         $insert_data= array(
                     'deptName' => $this->input->post('deptName'),
                     'deptStatus' => $this->input->post('deptStatus'),
@@ -23,6 +23,28 @@ class Department_model extends CI_Model
 			}
         
     }
+
+    function get_department_info(){
+		$query= $this->db->select('*')
+						->from('department_info')
+						->get();
+		$data = $query->result_array();
+		return $data;
+	}
+
+	function get_deptt(){
+		$query= $this->db->select('*')
+									->from('department_info')
+									->get();
+		$data = $query->result();
+		$row[''] = 'Select A Department';
+		if(count($data) > 0){
+		foreach($data as $field){
+			$row[$field->deptID] = $field->deptName;
+		}
+		}
+		return $row;
+	}	
 
 }
 ?>

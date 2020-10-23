@@ -13,5 +13,10 @@ class Department extends CI_Controller{
         $this->load->view('backend/department_view');
         $this->load->view('backend/layouts/footer');
     }
+
+    function add_dept(){
+        $this->department_model->add_dept();
+        //redirect('department');
+      }
 }
 ?>

@@ -67,10 +67,10 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="#" method="post">
+                            <form action="<?php echo base_url();?>department/add_dept" method="post">
                                 <div class="form-group">
                                     <label for="recipient-name" class="col-form-label">Department Name:</label>
-                                    <input type="text" class="form-control" id="recipient-name">
+                                    <input type="text" class="form-control" id="recipient-name" name="deptName" required="required">
                                 </div>
                                 <div class="form-group">
                                     <label for="message-text" class="col-form-label">Department Status:</label>
@@ -79,15 +79,18 @@
                                         <option value="0">Inactive</option>
                                     </select>
                                 </div>
+                            
+                        
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
                             </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Send message</button>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>    
+
             
           </div>
           <!-- /.col -->

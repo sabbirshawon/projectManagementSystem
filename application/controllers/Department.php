@@ -12,7 +12,7 @@ class Department extends CI_Controller{
 
         $data['title'] = "Department";
         $data['department_info'] = $this->department_model->get_department_info();
-
+        $data['designation_info'] = $this->department_model->get_designation_info();
         $data['deptt_info'] = $this->department_model->get_deptt();
         $this->load->view('backend/layouts/header',$data);
         $this->load->view('backend/department_view',$data);

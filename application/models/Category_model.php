@@ -25,7 +25,17 @@
 				$data['status'] = 'error';
 				
 			}
-		} 
+        }
+        
+        function get_category(){
+            $query= $this->db->select('*')
+                            ->from('tbl_category_info')
+                            ->get();
+            $data = $query->result_array();
+            return $data;
+        }
+
+        
     }
 
 ?>

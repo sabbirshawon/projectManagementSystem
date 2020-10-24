@@ -10,6 +10,7 @@ class Product extends CI_Controller{
     public function index() { 
 
         $data['title'] = "Product";
+        $data['pro_info'] = $this->products_model->get_product();
         $data['cat_info'] = $this->products_model->get_category();
         $this->load->view('backend/layouts/header');
         $this->load->view('backend/products_view',$data);

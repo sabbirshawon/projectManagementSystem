@@ -215,27 +215,40 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
-                UI Elements
+                  PMS-Services
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/UI/general.html" class="nav-link">
+                <a href="<?php echo base_url();?>Category" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>General</p>
+                  <p>Category</p>
                 </a>
               </li>
               
-           
-          
-           
               <li class="nav-item">
-                <a href="pages/UI/ribbons.html" class="nav-link">
+                <a href="<?php echo base_url();?>Product" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Ribbons</p>
+                  <p>Product</p>
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a href="<?php echo base_url();?>Package" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Package</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="<?php echo base_url();?>Clients" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Clients</p>
+                </a>
+              </li>
+
+
             </ul>
           </li>
          

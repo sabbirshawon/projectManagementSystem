@@ -45,17 +45,29 @@
                         </tr>
                   </thead>
                     <tbody>
+                    <?php foreach ($employee_info as $e_info):?>
                         <tr> 
-                            <td></td>
-                            <td></td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
+                          <td><?php echo $e_info['user_type'];?></td>
+                          <td><?php echo $e_info['e_name'];?></td>
+                          <td><?php echo $e_info['deptName'];?></td>
+                          <td><?php echo $e_info['designationName'];?></td>
+                          <td><?php echo $e_info['user_email'];?></td>
+                          <td>
+                          <?php 
+                            if($e_info['user_status'] == '1'){
+                              echo '<span class="text-success">Active</span>';
+                            } 
+                            else{
+                              echo '<span class="text-danger">Inactive</span>';
+                            }
+
+                          ?>
+                          </td>
                             <td>
                                 <a type="button" class="btn btn-primary">Edit</a>
                             </td> 
                         </tr>
+                        <?php endforeach;?>
                     </tbody>
                   
                 </table>

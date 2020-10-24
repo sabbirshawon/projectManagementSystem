@@ -25,7 +25,16 @@
 				$data['status'] = 'error';
 				
 			}
-        }
+		}
+		
+		function get_product(){
+			$query= $this->db->select('*')
+							->from('tbl_product_info')
+							->join('tbl_category_info','tbl_product_info.category_id = tbl_category_info.category_id','left')
+							->get();
+			$data = $query->result_array();
+			return $data;
+		}
         
         function get_category(){
             $query= $this->db->select('*')

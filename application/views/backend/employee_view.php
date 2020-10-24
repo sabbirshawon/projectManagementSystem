@@ -75,7 +75,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="#" method="post">
+                            <form action="<?php echo base_url();?>employee/add_emp" method="post">
                                 <div class="form-group">
                                     <label class="col-form-label">Department Name:</label>
                                     <?php echo form_dropdown('deptID',$deptt_info,'',' class="form-control" id="dept_id"');?>
@@ -87,8 +87,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="Emp_email" class="col-form-label">Employee Name:</label>
-                                    <input type="text" class="form-control" id="Emp_email" name="e_name" required="required">
+                                    <label for="Emp_name" class="col-form-label">Employee Name:</label>
+                                    <input type="text" class="form-control" id="Emp_name" name="e_name" required="required">
                                 </div>
 
                                 <div class="form-group">

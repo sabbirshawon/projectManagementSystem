@@ -88,5 +88,36 @@ class Department_model extends CI_Model
 			
 	}
 
+
+	function add_employee(){
+
+		date_default_timezone_set('Asia/Dhaka');
+		$user_doc = date('Y-m-d',time());
+		print_r($this->input->post('user_type'));
+
+		$insert_data= array(
+					'e_name' => $this->input->post('e_name'),
+					'user_email' => $this->input->post('user_email'),
+					'user_password' => md5($this->input->post('user_password')),
+					'user_type' => $this->input->post('user_type'),
+					'e_joined_date' => $this->input->post('e_joined_date'),
+					'deptID' => $this->input->post('deptID'),
+					'designationID' => $this->input->post('designationID'),
+					'user_status' => 1,
+					'user_doc' => $user_doc,
+					'created_by' => $this->session->userdata('user_id')
+					);
+		if($this->db->insert('tbl_users',$insert_data)){
+			//print_r('Designation added');
+			$data['status'] = 'success';
+		}
+		else{
+			//print_r('Designation not added');
+			$data['status'] = 'error';
+			
+		}
+			
+	}
+
 }
 ?>

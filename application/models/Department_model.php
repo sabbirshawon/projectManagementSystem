@@ -72,5 +72,21 @@ class Department_model extends CI_Model
 		return $data;
 	}
 
+	function get_designation(){
+		$query= $this->db->select('*')
+									->from('designation_info')
+									->get();
+		$data = $query->result();
+		$row[''] = 'Select A Designation';
+		if(count($data) > 0){
+			foreach($data as $field){
+				$row[$field->designationID] = $field->designationName;
+				//print_r($row[$field->designationID] ." ");
+			}
+		}
+		return $row;
+			
+	}
+
 }
 ?>

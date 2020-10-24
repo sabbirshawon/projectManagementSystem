@@ -41,14 +41,26 @@
                     </tr>
                   </thead>
                       <tbody>
+                      <?php foreach ($pro_info as $p_info):?>
                         <tr> 
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
+                            <td> <?php echo $p_info['category_title'];?> </td>
+                            <td> <?php echo $p_info['product_title'];?> </td>
+                            <td> 
+                              <?php 
+                                if($p_info['product_status'] == '1'){
+                                  echo '<span class="text-success">Active</span>';
+                                } 
+                                else{
+                                  echo '<span class="text-danger">Inactive</span>';
+                                }
+                              ?>
+                            
+                            </td>
                             <td>
                                 <a type="button" class="btn btn-primary">Edit</a>
                             </td> 
                         </tr>
+                        <?php endforeach;?>
                       </tbody>
                   
                 </table>

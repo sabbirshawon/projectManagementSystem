@@ -12,5 +12,12 @@ class Category extends CI_Controller{
         $this->load->view('backend/category_view');
         $this->load->view('backend/layouts/footer');
     }
+
+    function add_cat(){
+        
+        $this->category_model->add_cat();
+        redirect('category');
+    
+      }
 }
 ?>

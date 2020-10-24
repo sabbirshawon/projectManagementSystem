@@ -17,5 +17,10 @@ class Employee extends CI_Controller{
         $this->load->view('backend/employee_view',$data);
         $this->load->view('backend/layouts/footer');
     }
+
+    function add_emp(){
+        $this->department_model->add_employee();
+        redirect('employee');
+    }
 }
 ?>

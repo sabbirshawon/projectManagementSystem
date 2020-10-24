@@ -41,13 +41,26 @@
                     </tr>
                   </thead>
                     <tbody>
+                    <?php foreach ($cat_info as $c_info):?>
                         <tr> 
-                            <td></td>
-                            <td></td>
+                            <td><?php echo $c_info['category_title'];?></td>
+                            <td>
+                            <?php 
+                                if($c_info['category_status'] == '1'){
+                                    echo '<span class="text-success">Active</span>';
+                                } 
+                                else{
+                                    echo '<span class="text-danger">Inactive</span>';
+                                }
+
+                            ?>
+                        
+                            </td>
                             <td>
                                 <a type="button" class="btn btn-primary">Edit</a>
                             </td> 
                         </tr>
+                    <?php endforeach;?>
                     </tbody>
                   
                 </table>

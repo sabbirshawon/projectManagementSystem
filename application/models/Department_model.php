@@ -119,5 +119,18 @@ class Department_model extends CI_Model
 			
 	}
 
+	function get_employee_info(){
+		$query= $this->db->select('*')
+					->from('tbl_users,designation_info,department_info')
+					->where('designation_info.designationID = tbl_users.designationID')
+					->where('department_info.deptID = tbl_users.deptID')
+					->where('designation_info.designationID = tbl_users.designationID')
+					->get();
+		
+		$data = $query->result_array();
+		return $data;
+
+	}
+
 }
 ?>

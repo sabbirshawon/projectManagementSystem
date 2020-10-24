@@ -12,6 +12,7 @@ class Employee extends CI_Controller{
         $data['title'] = "Employee";
         $data['deptt_info'] = $this->department_model->get_deptt();
         $data['desg_info'] = $this->department_model->get_designation();
+        $data['employee_info'] = $this->department_model->get_employee_info();
 
         $this->load->view('backend/layouts/header');
         $this->load->view('backend/employee_view',$data);

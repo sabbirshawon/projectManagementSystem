@@ -7,10 +7,19 @@ class Package extends CI_Controller{
         parent:: __construct();
     }
   
-    public function index() { 
-        $this->load->view('backend/layouts/header');
-        $this->load->view('backend/package_view');
+    public function index(){
+
+        $data['title'] = "Package";
+        $data['prod_info'] = $this->products_model->get_products();
+
+        $this->load->view('backend/layouts/header',$data);
+        $this->load->view('backend/package_view',$data);
         $this->load->view('backend/layouts/footer');
+    }
+
+    function add_package(){
+        $this->package_model->add_package();
+        redirect('package');
     }
 }
 ?>

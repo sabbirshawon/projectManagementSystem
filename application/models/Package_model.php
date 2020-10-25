@@ -25,6 +25,15 @@
 			else{
 				$data['status'] = 'error';
 			}
+        }
+        
+        function get_package(){
+			$query= $this->db->select('*')
+							->from('tbl_package_info')
+							->join('tbl_product_info','tbl_package_info.product_id = tbl_product_info.product_id','left')
+							->get();
+			$data = $query->result_array();
+			return $data;
 		}
 		
 	}

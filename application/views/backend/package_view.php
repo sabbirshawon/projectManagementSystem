@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Employee</h1>
+            <h1>Package</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -24,10 +24,10 @@
           <div class="col-12">
             <div class="card" id="department_card">
               <div class="card-header">
-                <h3 class="card-title">Employee</h3>
+                <h3 class="card-title">Package</h3>
                 <br>
                 <br>
-                <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#addEmploy" data-whatever="@mdo">Add New Employee</a>
+                <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#addpack" data-whatever="@mdo">Add New Package</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -56,6 +56,52 @@
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
+
+
+            <!-- modal for Add package -->
+            <div class="modal fade" id="addpack" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add New Package</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="<?php echo base_url();?>package/add_package" method="post">
+                                <div class="form-group">
+                                    <label class="col-form-label">Product Title: </label>
+                                    <?php echo form_dropdown('product_id',$prod_info,'',' class="form-control"');?>
+                                    
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label">Package Title</label>
+                                    <input type="text" class="form-control" name="package_title" required="required">
+                                </div>
+                              
+            
+                                <div class="form-group">
+                                    <label class="col-form-label">Package Status: </label>
+                                    <select name="package_status" class="form-control" required="required">
+                                      <option value="1">Active</option>
+                                      <option value="0">Inactive</option>
+                                    </select>
+                                </div>
+                            
+                        
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          <!-- Add package modal finished -->
 
             </div>
           <!-- /.col -->

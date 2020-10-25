@@ -41,14 +41,25 @@
                     </tr>
                   </thead>
                     <tbody>
+                    <?php foreach ($pack_info as $c_info):?>
                         <tr> 
-                            <td></td>
-                            <td> </td>
-                            <td> </td>
-                            <td>
+                          <td><?php echo $c_info['product_title'];?></td>
+                          <td><?php echo $c_info['package_title'];?></td>
+                          <td>
+                            <?php 
+                              if($c_info['package_status'] == '1'){
+                                echo '<span class="text-success">Active</span>';
+                              } 
+                              else{
+                                echo '<span class="text-danger">Inactive</span>';
+                              }
+                            ?>
+                          </td>
+                          <td>
                                 <a type="button" class="btn btn-primary">Edit</a>
-                            </td> 
+                          </td> 
                         </tr>
+                      <?php endforeach;?>
                     </tbody>
                   
                 </table>

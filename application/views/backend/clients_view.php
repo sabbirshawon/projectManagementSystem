@@ -49,18 +49,30 @@
                         </tr>
                   </thead>
                     <tbody>
+                    <?php foreach ($clients_info as $c_info):?>
                         <tr> 
-                            <td></td>
-                            <td></td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
+                          <td><?php echo $c_info['clientName'];?></td>
+                          <td><?php echo $c_info['companyName'];?></td>
+                          <td><?php echo $c_info['clientAddress'];?></td>
+                          <td><?php echo $c_info['clientMobileNo'];?></td>
+                          <td><?php echo $c_info['clientEmailAddress'];?></td>
+                          <td><?php echo $c_info['product_title'];?></td>
+                          <td>
+                            <?php 
+                              if($c_info['clientStatus'] == '1'){
+                                echo '<span class="text-success">Active</span>';
+                              } 
+                              else{
+                                echo '<span class="text-danger">Inactive</span>';
+                              }
+
+                            ?>
+                          </td>
                             <td>
                                 <a type="button" class="btn btn-primary">Edit</a>
                             </td> 
                         </tr>
+                        <?php endforeach;?>
                     </tbody>
                   
                 </table>

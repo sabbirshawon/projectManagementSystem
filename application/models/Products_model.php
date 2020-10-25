@@ -35,6 +35,21 @@
 			$data = $query->result_array();
 			return $data;
 		}
+
+		function get_products(){
+			$query= $this->db->select('*')
+										->from('tbl_product_info')
+										->get();
+			$data = $query->result();
+			$row[''] = 'Select A Product';
+			if(count($data) > 0){
+			    foreach($data as $field){
+				    $row[$field->product_id] = $field->product_title;
+			    }
+			}
+			return $row;
+				
+		}
         
         function get_category(){
             $query= $this->db->select('*')

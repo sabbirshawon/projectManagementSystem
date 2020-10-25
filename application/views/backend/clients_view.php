@@ -5,7 +5,10 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Employee</h1>
+            <h1>
+              Clients
+    
+            </h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -24,10 +27,10 @@
           <div class="col-12">
             <div class="card" id="department_card">
               <div class="card-header">
-                <h3 class="card-title">Employee</h3>
+                <h3 class="card-title">Clients</h3>
                 <br>
                 <br>
-                <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#addEmploy" data-whatever="@mdo">Add New Employee</a>
+                <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCli" data-whatever="@mdo">Add New Clients</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -65,6 +68,65 @@
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
+
+
+
+             <!-- modal for Add clients -->
+             <div class="modal fade" id="addCli" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add New Package</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="<?php echo base_url();?>clients/add_client" method="post">
+                                <div class="form-group">
+                                    <label class="col-form-label">Client Name: </label>
+                                    <input type="text" class="form-control" name="clientName" required="required">
+                                    
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label">Company Name: </label>
+                                    <input type="text" class="form-control" name="companyName" required="required">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label">Address: </label>
+                                    <input type="text" class="form-control" name="clientAddress" required="required">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label">Mobile No: </label>
+                                    <input type="text" class="form-control" name="clientMobileNo" required="required">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label">Email: </label>
+                                    <input type="email" class="form-control" name="clientEmailAddress" required="required">
+                                </div>
+                              
+            
+                                <div class="form-group">
+                                    <label class="col-form-label">Product: </label>
+                                    <?php echo form_dropdown('product_id',$prod_info,'',' class="form-control"');?>
+                                </div>
+                            
+                        
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          <!-- Add clients modal finished -->
 
             </div>
           <!-- /.col -->

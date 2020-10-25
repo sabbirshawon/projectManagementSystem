@@ -11,7 +11,7 @@ class Package extends CI_Controller{
 
         $data['title'] = "Package";
         $data['prod_info'] = $this->products_model->get_products();
-
+        $data['pack_info'] = $this->package_model->get_package();
         $this->load->view('backend/layouts/header',$data);
         $this->load->view('backend/package_view',$data);
         $this->load->view('backend/layouts/footer');

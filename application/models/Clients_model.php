@@ -28,7 +28,18 @@
 				$data['status'] = 'error';
 				
 			}
-		} 
+          } 
+          
+          function get_clients(){
+			$query= $this->db->select('*')
+							->from('tbl_client_info')
+							->join('tbl_product_info','tbl_client_info.product_id = tbl_product_info.product_id','left')
+							//->where('')
+							->get();
+				
+			$data = $query->result_array();
+			return $data;
+		}
         
     }
 

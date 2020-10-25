@@ -10,6 +10,7 @@ class Clients extends CI_Controller{
     public function index() { 
         $data['title'] = "Clients";
         $data['prod_info'] = $this->products_model->get_products();
+        $data['clients_info'] = $this->clients_model->get_clients();
         $this->load->view('backend/layouts/header',$data);
         $this->load->view('backend/clients_view',$data);
         $this->load->view('backend/layouts/footer');

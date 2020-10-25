@@ -8,9 +8,16 @@ class Clients extends CI_Controller{
     }
   
     public function index() { 
-        $this->load->view('backend/layouts/header');
-        $this->load->view('backend/clients_view');
+        $data['title'] = "Clients";
+        $data['prod_info'] = $this->products_model->get_products();
+        $this->load->view('backend/layouts/header',$data);
+        $this->load->view('backend/clients_view',$data);
         $this->load->view('backend/layouts/footer');
+    }
+
+    function add_client(){
+        $this->clients_model->add_client();
+        redirect('clients');
     }
 }
 ?>

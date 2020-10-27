@@ -8,11 +8,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       }
   
       public function index() { 
-         $this->load->view('frontend/login'); 
+        $this->load->view('backend/layouts/header');
+        $this->load->view('backend/projects_view');
+        $this->load->view('backend/layouts/footer');
       }
-
-      public function hello() { 
-         echo "This is hello function."; 
-      } 
 }
 ?>

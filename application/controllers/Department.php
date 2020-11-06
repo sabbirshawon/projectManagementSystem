@@ -24,6 +24,12 @@ class Department extends CI_Controller{
         redirect('department');
       }
 
+      function get_dept_info_for_edit(){
+        $dept_id = $this->input->post('dept_id');
+        $data['dept_info'] = $this->department_model->get_department_for_edit($dept_id);
+        echo json_encode($data['dept_info']);
+      }
+
       function add_designation(){
         
         $this->department_model->add_designation();

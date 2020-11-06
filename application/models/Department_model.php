@@ -62,6 +62,16 @@ class Department_model extends CI_Model
 		}
 		return $row;
 	}
+
+	function get_department_for_edit($dept_id){
+		$query= $this->db->select('*')
+									->from('department_info')
+									->where('department_info.deptID',$dept_id)
+									->get();
+		$data = $query->row_array();
+		//print_r($data);
+		return $data;
+	}
 	
 	function get_designation_info(){
 		$query= $this->db->select('*')

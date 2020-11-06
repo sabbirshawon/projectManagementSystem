@@ -31,6 +31,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+              <input type="hidden" id="department_info_details" value="<?php echo base_url();?>department/get_dept_info_for_edit">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
@@ -40,9 +41,10 @@
                     <th>Action</th>
                   </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="dept_edited">
                     <?php foreach ($department_info as $d_info):?>
                         <tr> 
+                            <input type="hidden" id="dept_<?php echo $d_info['deptID'];?>" value="<?php echo $d_info['deptID'];?>">
                             <td><?php echo $d_info['deptID'];?></td>
                             <td><?php echo $d_info['deptName'];?></td>
                             <td>    
@@ -59,7 +61,8 @@
                             </td>
 
                             <td>
-                                <a type="button" class="btn btn-primary">Edit</a>
+                              <input type="hidden" name="dept_id" value="<?php echo $d_info['deptID'];?>" style="display: none;">   
+                              <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#editDept" data-whatever="@mdo">Edit</a>
                             </td> 
                         </tr>
                     <?php endforeach;?>
@@ -158,6 +161,46 @@
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+
+
+
+            <!-- modal for edit department -->
+            <div class="modal fade" id="editDept" tabindex="-1" role="dialog" aria-labelledby="addDesignation" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Update Department Info</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                          <form  action="<?php echo base_url();?>department/edit_dept" method="post">
+                            <div class="form-group">
+                              <label class="col-form-label">Department Name</label>
+                              <input type="text" class="form-control" id="deptName_id" name="deptName" required="required">
+                            </div>
+
+                           
+                            <div class="form-group">
+                              <label  class="col-form-label">Department Status</label>
+                              <select name="deptStatus" id="deptStatus_id" class="form-control">
+                                  <option value="1">Active</option>
+                                  <option value="0">Inactive</option>
+                              </select>
+                              <input type="hidden" class="form-control" name="deptID" id="deptID2">
+                            </div>
+                            
+                        
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                          </form>
                         </div>
                     </div>
                 </div>

@@ -7,7 +7,7 @@ $(document).ready(function() {
         //alert(dept_id);
         console.log(dept_id);
         var department_info_details = $('#department_info_details').val();
-        alert(department_info_details);
+        //alert(department_info_details);
         $.ajax({
             url: department_info_details,
             type: 'POST',
@@ -37,7 +37,7 @@ $(document).ready(function() {
         //alert(desg_id);
         console.log(desg_id);
         var designation_info_details = $('#designation_info_details').val();
-        alert(designation_info_details);
+        //alert(designation_info_details);
         $.ajax({
             url: designation_info_details,
             type: 'POST',
@@ -53,7 +53,7 @@ $(document).ready(function() {
                 console.log();
              },
             error: function (jXHR, textStatus, errorThrown) {
-                console.log(errorThrown);
+                console.log(textStatus);
             }
         });
 
@@ -63,3 +63,62 @@ $(document).ready(function() {
 
 
 //designation edit end//
+
+// department onchange designation start
+$(document).ready(function() {
+    $('#dept_id').change(function(){
+        var clss_id = $('#dept_id').val();
+        var i;
+        var submiturl=$('#dept_to_desg').val();
+        console.log(submiturl);
+        var outputs="";
+        if(clss_id!=''){
+        $.ajax({
+            url: submiturl,
+            type: 'POST',
+            dataType: 'json',
+            data: {'deptID':clss_id},
+            success:function(result){
+            outputs+='<option>Select a Designation</option>';
+            for(i=0; i<result.length; i++ ){
+              outputs+='<option value="'+result[i].designationID+'">'+result[i].designationName+'</option>';
+             }
+              $("#desg_ID").html(outputs);
+             },
+            error: function (jXHR, textStatus, errorThrown) {}
+        });
+        }
+    });
+});
+
+
+// department onchange designation end
+
+// department2 onchange designation start on employee view page
+$(document).ready(function() {
+    $('#e_dept_id').change(function(){
+        var clss_id = $('#e_dept_id').val();
+        var i;
+        var submiturl=$('#dept_to_desg').val();
+        var outputs="";
+        if(clss_id!=''){
+        $.ajax({
+            url: submiturl,
+            type: 'POST',
+            dataType: 'json',
+            data: {'deptID':clss_id},
+            success:function(result){
+            outputs+='<option>Select a Designation</option>';
+            for(i=0; i<result.length; i++ ){
+              outputs+='<option value="'+result[i].designationID+'">'+result[i].designationName+'</option>';
+             }
+              $("#e_desg_ID").html(outputs);
+             },
+            error: function (jXHR, textStatus, errorThrown) {}
+        });
+        }
+    });
+});
+
+
+// department2 onchange designation end on employee view page

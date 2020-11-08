@@ -111,6 +111,29 @@ class Department_model extends CI_Model
 			
 	}
 
+	function get_desg_for_edit($desg_id){
+		$query= $this->db->select('*')
+									->from('department_info,designation_info')
+									->where('department_info.deptID = designation_info.deptID')
+									->where('designation_info.designationID',$desg_id)
+									->get();
+		$data = $query->row_array();
+		return $data;
+	}
+
+	function edit_desg(){
+		$desgID = $this->input->post('designationID');
+		$data = array(
+			   'deptID' =>  $this->input->post('deptID'),
+			   'designationName' =>  $this->input->post('designationName'),
+			   'desgStatus' => $this->input->post('desgStatus')
+			);
+
+		$this->db->where('designationID', $desgID);
+		$this->db->update('designation_info', $data); 	
+		
+	}
+
 
 	function add_employee(){
 

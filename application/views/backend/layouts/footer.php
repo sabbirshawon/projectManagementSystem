@@ -48,6 +48,8 @@
 <script src="<?php echo base_url();?>assets/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url();?>assets/dist/js/demo.js"></script>
+
+<script src="<?php echo base_url();?>assets/dist/js/my.js"></script>
 <script>
   $(function () {
     $("#example1").DataTable({

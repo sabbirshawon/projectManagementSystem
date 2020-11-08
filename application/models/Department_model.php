@@ -62,6 +62,29 @@ class Department_model extends CI_Model
 		}
 		return $row;
 	}
+
+	function get_department_for_edit($dept_id){
+		$query= $this->db->select('*')
+									->from('department_info')
+									->where('department_info.deptID',$dept_id)
+									->get();
+		$data = $query->row_array();
+		//print_r($data);
+		return $data;
+	}
+
+	function edit_dept(){
+		$deptID = $this->input->post('deptID');
+		$data = array(
+			   'deptName' =>  $this->input->post('deptName'),
+			   'deptStatus' => $this->input->post('deptStatus')
+			);
+
+		$this->db->where('deptID', $deptID);
+		$this->db->update('department_info', $data); 	
+	}
+
+
 	
 	function get_designation_info(){
 		$query= $this->db->select('*')

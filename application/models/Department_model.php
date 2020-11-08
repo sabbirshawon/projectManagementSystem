@@ -178,5 +178,13 @@ class Department_model extends CI_Model
 
 	}
 
+
+	/*---- department -> designation ----*/
+	function get_dept_to_desg($dept_id){
+		$this ->db->where('deptID',$dept_id);
+		$query = $this->db->get('designation_info');
+	return $query;
+}
+
 }
 ?>

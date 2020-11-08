@@ -44,7 +44,7 @@ class Department extends CI_Controller{
 
       function edit_desg(){
         $this->department_model->edit_desg();
-        //redirect('department');
+        redirect('department');
       }
     
     
@@ -52,7 +52,7 @@ class Department extends CI_Controller{
         $desg_id = $this->input->post('designationID');
         $data['desg_info'] = $this->department_model->get_desg_for_edit($desg_id);
         echo json_encode($data['desg_info']);
-        print_r($data['desg_info']);
+        //print_r($data['desg_info']);
       }
 }
 ?>

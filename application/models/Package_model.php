@@ -35,6 +35,15 @@
 			$data = $query->result_array();
 			return $data;
 		}
+
+		function get_package_for_edit($package_id){
+			$query= $this->db->select('*')
+							->from('tbl_package_info')
+							->where('tbl_package_info.package_id',$package_id)
+							->get();
+			$data = $query->row_array();
+			return $data;
+		}
 		
 	}
 

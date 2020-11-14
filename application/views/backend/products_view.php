@@ -31,6 +31,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+                <input type="hidden" id="prod_info_details" value="<?php echo base_url();?>product/get_prod_info_for_edit">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
@@ -40,9 +41,10 @@
                       <th>Action</th>
                     </tr>
                   </thead>
-                      <tbody>
+                  <tbody id="prod_edited">
                       <?php foreach ($pro_info as $p_info):?>
                         <tr> 
+                        <input type="hidden" id="pro_<?php echo $p_info['product_id'];?>" value="<?php echo $p_info['product_id'];?>">
                             <td> <?php echo $p_info['category_title'];?> </td>
                             <td> <?php echo $p_info['product_title'];?> </td>
                             <td> 
@@ -57,7 +59,8 @@
                             
                             </td>
                             <td>
-                                <a type="button" class="btn btn-primary">Edit</a>
+                              <input type="hidden" name="product_id" value="<?php echo $p_info['product_id'];?>" style="display: none;">
+                              <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#editProd" data-whatever="@mdo">Edit</a>
                             </td> 
                         </tr>
                         <?php endforeach;?>
@@ -109,6 +112,50 @@
                     </div>
                 </div>
             </div>
+
+
+            <!-- modal for start edit Products -->
+            <div class="modal fade" id="editProd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Products</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="<?php echo base_url();?>product/edit_prod" method="post">
+                                <div class="form-group">
+                                    <label class="col-form-label">Category Title: </label>
+                                    <?php echo form_dropdown('category_id',$cat_info,'',' id="cat_id2" class="form-control"');?>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label">Product Title</label>
+                                    <input type="text" class="form-control" name="product_title" id="product_title2" required="required">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label">Category Status: </label>
+                                    <select name="product_status" id="product_status2" class="form-control" required="required">
+                                      <option value="1">Active</option>
+                                      <option value="0">Inactive</option>
+                                    </select>
+                                </div>
+                            
+                        
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- modal  end for edit Products -->
 
             </div>
           <!-- /.col -->

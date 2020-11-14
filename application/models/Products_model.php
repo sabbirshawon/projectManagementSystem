@@ -65,7 +65,39 @@
             }
             return $row;
                 
-        }
+		}
+		
+		function get_prod_for_edit($product_id){
+			$query= $this->db->select('*')
+							->from('tbl_product_info,tbl_category_info')
+							->where('tbl_product_info.category_id = tbl_category_info.category_id')
+							->where('tbl_product_info.product_id',$product_id)
+							->get();
+			$data = $query->row_array();
+			return $data;
+		}
+
+
+	function edit_prod(){
+
+			date_default_timezone_set('Asia/Dhaka');
+			$date = date('Y-m-d',time());
+
+			$product_id = $this->input->post('product_id');
+			$data = array(
+				'category_id' => $this->input->post('category_id'),
+				'product_title' => $this->input->post('product_title'),
+				'product_status' => $this->input->post('product_status'),
+				'product_created_by' => $this->session->userdata('user_id')
+				);
+
+			$this->db->where('product_id', $product_id);
+
+			$result = $this->db->update('tbl_product_info', $data);
+
+			return $result;
+			
+		}
     }
 
 ?>

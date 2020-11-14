@@ -31,6 +31,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+              <input type="hidden" id="emp_info_details" value="<?php echo base_url();?>employee/get_emp_info_for_edit">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
@@ -44,9 +45,10 @@
                             
                         </tr>
                   </thead>
-                    <tbody>
+                    <tbody id="emp_edited">
                     <?php foreach ($employee_info as $e_info):?>
                         <tr> 
+                        <input type="hidden" id="emp_<?php echo $e_info['user_id'];?>" value="<?php echo $e_info['user_id'];?>">
                           <td><?php echo $e_info['user_type'];?></td>
                           <td><?php echo $e_info['e_name'];?></td>
                           <td><?php echo $e_info['deptName'];?></td>
@@ -64,6 +66,7 @@
                           ?>
                           </td>
                             <td>
+                                <input type="hidden" name="user_id" value="<?php echo $e_info['user_id'];?>" style="display: none;">
                                 <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#editEmp" data-whatever="@mdo">Edit</a>
                             </td> 
                         </tr>

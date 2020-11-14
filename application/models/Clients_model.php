@@ -40,6 +40,42 @@
 			$data = $query->result_array();
 			return $data;
 		}
+
+
+		function get_client_for_edit($client_id){
+			$query= $this->db->select('*')
+							->from('tbl_client_info')
+							->where('tbl_client_info.client_id',$client_id)
+							->get();
+			$data = $query->row_array();
+			return $data;
+		}
+
+		function edit_cli(){
+						
+			date_default_timezone_set('Asia/Dhaka');
+			$date = date('Y-m-d',time());
+
+			$cli_id = $this->input->post('client_id');
+			$data = array(
+				'product_id' => $this->input->post('product_id'),
+				'clientName' => $this->input->post('clientName'),
+				'companyName' => $this->input->post('companyName'),
+				'clientAddress' => $this->input->post('clientAddress'),
+				'clientMobileNo' => $this->input->post('clientMobileNo'),
+				'clientEmailAddress' => $this->input->post('clientEmailAddress'),
+				'client_info_doc' => $date,
+				'client_info_created_by' => $this->session->userdata('user_id')
+				);
+
+			$this->db->where('client_id', $cli_id);
+			//$this->db->update('tbl_client_info', $data); 	
+
+			$result = $this->db->update('tbl_client_info', $data);
+
+			return $result;
+			
+		}
         
     }
 

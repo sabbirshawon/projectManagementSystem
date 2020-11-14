@@ -178,6 +178,33 @@ class Department_model extends CI_Model
 
 	}
 
+	function get_employee_for_edit($user_id){
+		$query= $this->db->select('*')
+						->from('tbl_users')
+
+						->where('tbl_users.user_id',$user_id)
+						->get();
+		$data = $query->row_array();
+		return $data;
+	}
+
+
+
+
+	function edit_emp(){
+		$user_id = $this->input->post('user_id');
+		$data = array(
+			   'user_type' =>  $this->input->post('user_type'),
+			   'user_status' =>  $this->input->post('user_status'),
+			   'deptID' =>  $this->input->post('deptID'),
+			   'designationID' =>  $this->input->post('designationID')
+			);
+
+		$this->db->where('user_id', $user_id);
+		$this->db->update('tbl_users', $data); 	
+		
+	}
+
 
 	/*---- department -> designation ----*/
 	function get_dept_to_desg($dept_id){

@@ -20,5 +20,17 @@ class Clients extends CI_Controller{
         $this->clients_model->add_client();
         redirect('clients');
     }
+
+    function get_cli_info_for_edit(){
+        $client_id = $this->input->post('client_id');
+        $data['cli_info'] = $this->clients_model->get_client_for_edit($client_id);
+        echo json_encode($data['cli_info']);
+    }
+
+
+    function edit_client(){
+        $data['edit_cli'] = $this->clients_model->edit_cli();
+        redirect('clients');
+      }
 }
 ?>

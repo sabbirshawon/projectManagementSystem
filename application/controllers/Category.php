@@ -17,10 +17,20 @@ class Category extends CI_Controller{
     }
 
     function add_cat(){
-        
         $this->category_model->add_cat();
         redirect('category');
-    
+    }
+
+    function edit_cat(){
+        $data['edit_cat'] = $this->category_model->edit_cat();
+        redirect('category');
       }
+    
+    
+        function get_cat_info_for_edit(){
+            $category_id = $this->input->post('category_id');
+            $data['cate_info'] = $this->category_model->get_cat_for_edit($category_id);
+            echo json_encode($data['cate_info']);
+        }
 }
 ?>

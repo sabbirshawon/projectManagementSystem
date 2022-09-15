@@ -31,6 +31,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+              <input type="hidden" id="emp_info_details" value="<?php echo base_url();?>employee/get_emp_info_for_edit">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
@@ -44,9 +45,10 @@
                             
                         </tr>
                   </thead>
-                    <tbody>
+                    <tbody id="emp_edited">
                     <?php foreach ($employee_info as $e_info):?>
                         <tr> 
+                        <input type="hidden" id="emp_<?php echo $e_info['user_id'];?>" value="<?php echo $e_info['user_id'];?>">
                           <td><?php echo $e_info['user_type'];?></td>
                           <td><?php echo $e_info['e_name'];?></td>
                           <td><?php echo $e_info['deptName'];?></td>
@@ -64,7 +66,8 @@
                           ?>
                           </td>
                             <td>
-                                <a type="button" class="btn btn-primary">Edit</a>
+                                <input type="hidden" name="user_id" value="<?php echo $e_info['user_id'];?>" style="display: none;">
+                                <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#editEmp" data-whatever="@mdo">Edit</a>
                             </td> 
                         </tr>
                         <?php endforeach;?>
@@ -76,8 +79,8 @@
             </div>
             <!-- /.card -->
 
-            <!-- modal start-->
-            <div class="modal fade" id="addEmp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!-- modal start for add employee-->
+              <div class="modal fade" id="addEmp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -95,6 +98,7 @@
 
                                 <div class="form-group">
                                     <label class="col-form-label">Designation Name:</label>
+                                    <input type="hidden" id="dept_to_desg" value="<?php echo base_url();?>employee/get_dept_desg">
                                     <?php echo form_dropdown('designationID',$desg_info,'',' class="form-control" id="desg_ID"');?>
                                 </div>
 
@@ -139,7 +143,60 @@
                         </div>
                     </div>
                 </div>
-            </div>   
+              </div> 
+              
+              <!-- modal start for edit employee-->
+              <div class="modal fade" id="editEmp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Update Employee</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="<?php echo base_url();?>employee/edit_emp" method="post">
+                                <div class="form-group">
+                                    <label class="col-form-label">Department Name:</label>
+                                    <?php echo form_dropdown('deptID',$deptt_info,'',' class="form-control" id="e_dept_id"');?>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label">Designation Name:</label>
+                                    <input type="hidden" id="dept_to_desg" value="<?php echo base_url();?>employee/get_dept_desg">
+                                    <?php echo form_dropdown('designationID',$desg_info,'',' class="form-control" id="e_desg_ID"');?>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Employee Type:</label>
+                                      <select name="user_type" class="form-control">
+                                        <option value="Admin">Admin</option>
+                                        <option value="Developer">Developer</option>
+                                        <option value="Manager">Manager</option>
+                                      </select>
+                                </div> 
+                                
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Employee Status:</label>
+                                    <select name="user_status" id="user_status_id" class="form-control">
+                                      <option value="1">Active</option>
+                                      <option value="0">Inactive</option>
+                                  </select>
+                                  <input type="hidden" class="form-control" name="user_id" id="user_id2">
+                                </div>
+
+                              <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+              </div>   
+
+              <!-- modal end for edit employee-->
 
             </div>
           <!-- /.col -->

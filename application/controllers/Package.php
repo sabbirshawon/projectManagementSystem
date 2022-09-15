@@ -21,5 +21,18 @@ class Package extends CI_Controller{
         $this->package_model->add_package();
         redirect('package');
     }
+
+    function get_package_info_for_edit(){
+        $package_id = $this->input->post('package_id');
+        $data['packs_info'] = $this->package_model->get_package_for_edit($package_id);
+        
+        echo json_encode($data['packs_info']);
+    }
+
+
+    function edit_pack(){
+        $data['edit_prod'] = $this->products_model->edit_prod();
+        redirect('product');
+      }
 }
 ?>

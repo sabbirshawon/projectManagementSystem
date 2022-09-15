@@ -8,7 +8,7 @@ class Dashboard extends CI_Controller{
     }
   
     public function index(){
-        print_r("dashboard");
+        //print_r("dashboard");
         $this->load->view('backend/layouts/header');
         $this->load->view('backend/index');
         $this->load->view('backend/layouts/footer');

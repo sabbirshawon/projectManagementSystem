@@ -111,6 +111,29 @@ class Department_model extends CI_Model
 			
 	}
 
+	function get_desg_for_edit($desg_id){
+		$query= $this->db->select('*')
+									->from('department_info,designation_info')
+									->where('department_info.deptID = designation_info.deptID')
+									->where('designation_info.designationID',$desg_id)
+									->get();
+		$data = $query->row_array();
+		return $data;
+	}
+
+	function edit_desg(){
+		$desgID = $this->input->post('designationID');
+		$data = array(
+			   'deptID' =>  $this->input->post('deptID'),
+			   'designationName' =>  $this->input->post('designationName'),
+			   'desgStatus' => $this->input->post('desgStatus')
+			);
+
+		$this->db->where('designationID', $desgID);
+		$this->db->update('designation_info', $data); 	
+		
+	}
+
 
 	function add_employee(){
 
@@ -154,6 +177,41 @@ class Department_model extends CI_Model
 		return $data;
 
 	}
+
+	function get_employee_for_edit($user_id){
+		$query= $this->db->select('*')
+						->from('tbl_users')
+
+						->where('tbl_users.user_id',$user_id)
+						->get();
+		$data = $query->row_array();
+		return $data;
+	}
+
+
+
+
+	function edit_emp(){
+		$user_id = $this->input->post('user_id');
+		$data = array(
+			   'user_type' =>  $this->input->post('user_type'),
+			   'user_status' =>  $this->input->post('user_status'),
+			   'deptID' =>  $this->input->post('deptID'),
+			   'designationID' =>  $this->input->post('designationID')
+			);
+
+		$this->db->where('user_id', $user_id);
+		$this->db->update('tbl_users', $data); 	
+		
+	}
+
+
+	/*---- department -> designation ----*/
+	function get_dept_to_desg($dept_id){
+		$this ->db->where('deptID',$dept_id);
+		$query = $this->db->get('designation_info');
+	return $query;
+}
 
 }
 ?>

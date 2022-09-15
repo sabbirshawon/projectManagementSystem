@@ -31,6 +31,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+                <input type="hidden" id="pack_info_details" value="<?php echo base_url();?>package/get_package_info_for_edit" >
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                     <tr>
@@ -40,9 +41,10 @@
                       <th>Action</th>
                     </tr>
                   </thead>
-                    <tbody>
+                    <tbody id="pack_edited">>
                     <?php foreach ($pack_info as $c_info):?>
-                        <tr> 
+                        <tr>
+                        <input type="hidden" id="cli_<?php echo $c_info['package_id'];?>" value="<?php echo $c_info['package_id'];?>">
                           <td><?php echo $c_info['product_title'];?></td>
                           <td><?php echo $c_info['package_title'];?></td>
                           <td>
@@ -56,11 +58,12 @@
                             ?>
                           </td>
                           <td>
-                                <a type="button" class="btn btn-primary">Edit</a>
+                            <input type="hidden" name="package_id" value="<?php echo $c_info['package_id'];?>" style="display: none;">
+                            <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#editpack" data-whatever="@mdo">Edit</a>
                           </td> 
                         </tr>
                       <?php endforeach;?>
-                    </tbody>
+                    </>
                   
                 </table>
               </div>
@@ -99,6 +102,48 @@
                                       <option value="1">Active</option>
                                       <option value="0">Inactive</option>
                                     </select>
+                                </div>
+                            
+                        
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+          <!-- Add package modal finished -->
+
+          <!-- modal for Add package -->
+          <div class="modal fade" id="editpack" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add New Package</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="<?php echo base_url();?>package/edit_package" method="post">
+                          
+
+                                <div class="form-group">
+                                    <label class="col-form-label">Package Title</label>
+                                    <input type="text" class="form-control" name="package_title" id="package_title2" required="required">
+                                </div>
+                              
+            
+                                <div class="form-group">
+                                    <label class="col-form-label">Package Status: </label>
+                                    <select name="category_status" id="package_status2" class="form-control" required="required">
+                                      <option value="1">Active</option>
+                                      <option value="0">Inactive</option>
+                                    </select>
+                                    <input type="hidden" class="form-control" name="category_id" id="category_id2">
                                 </div>
                             
                         

@@ -168,14 +168,18 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
+
+
+
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
           <img src="<?php echo base_url();?>assets/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-        <a href="#" class="d-block">Alexander Pierce</a>
+        <a href="#" class="d-block"> James smith  </a>
         </div>
       </div>
+
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -202,7 +206,7 @@
 
 
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+            <a href="<?php echo base_url();?>Projects" class="nav-link active">
               <i class="nav-icon fa fa-files-o"></i>
               <p>
                 Projects
